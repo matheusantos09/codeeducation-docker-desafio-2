@@ -5,7 +5,6 @@ const app = express();
 const port = 3000;
 
 db.query(`CREATE TABLE IF NOT EXISTS people (name VARCHAR(255))`);
-db.query(`INSERT INTO people(name) values ('Matheus Eduardo')`);
 
 var getPeople = function (callback) {
   db.query("SELECT * FROM people", (err, res) => {
@@ -17,6 +16,8 @@ var getPeople = function (callback) {
 };
 
 app.get("/", (_, res) => {
+  db.query(`INSERT INTO people(name) values ('Matheus Eduardo')`);
+
   getPeople((err, results) => {
     let html = "<h1>Full Cycle Rocks!</h1>";
     html += "<ul>";
