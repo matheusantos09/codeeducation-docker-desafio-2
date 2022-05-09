@@ -1,4 +1,6 @@
-module.exports = function () {
+const mysql = require("mysql");
+
+const db = () => {
   const config = {
     host: "db",
     user: "root",
@@ -6,8 +8,9 @@ module.exports = function () {
     database: "nodedb",
   };
 
-  const mysql = require("mysql");
   const connection = mysql.createConnection(config);
 
   return connection;
 };
+
+module.exports = db();

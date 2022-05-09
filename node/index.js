@@ -1,9 +1,10 @@
 const express = require("express");
+const db = require("./services/db");
 
 const app = express();
 const port = 3000;
-const db = require("./services/db");
 
+db.query(`CREATE TABLE IF NOT EXISTS people (name VARCHAR(255))`);
 db.query(`INSERT INTO people(name) values ('Matheus Eduardo')`);
 
 var getPeople = function (callback) {
